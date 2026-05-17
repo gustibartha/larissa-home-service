@@ -1,0 +1,9 @@
+.env
+.env.*
+*.db
+*.db-shm
+*.db-wal
+drizzle
+.git
+node_modules
+.next
