@@ -12,6 +12,7 @@ export const auth = betterAuth({
     "http://127.0.0.1:3000",
     "http://192.168.18.8:3000",
     "https://*.trycloudflare.com",
+    "https://*.vercel.app",
   ],
   database: drizzleAdapter(db, {
     provider: "sqlite",

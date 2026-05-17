@@ -1,22 +1,23 @@
-import Database from "better-sqlite3";
-import { drizzle } from "drizzle-orm/better-sqlite3";
+import { createClient, type Client } from "@libsql/client";
+import { drizzle } from "drizzle-orm/libsql";
 import * as schema from "./schema";
 
-// Reuse the connection across HMR reloads in development.
-const globalForDb = globalThis as unknown as {
-  sqlite?: Database.Database;
-};
+// libSQL works with a local file (file:./larissa.db) in development and a
+// remote Turso database (libsql://... + auth token) in production/Vercel.
+const url =
+  process.env.TURSO_DATABASE_URL ??
+  process.env.DATABASE_URL ??
+  "file:./larissa.db";
+const authToken = process.env.TURSO_AUTH_TOKEN;
 
-const sqlite =
-  globalForDb.sqlite ??
-  new Database(process.env.DATABASE_PATH ?? "./larissa.db");
+const globalForDb = globalThis as unknown as { libsql?: Client };
 
-sqlite.pragma("journal_mode = WAL");
-sqlite.pragma("foreign_keys = ON");
+const client =
+  globalForDb.libsql ?? createClient({ url, authToken });
 
 if (process.env.NODE_ENV !== "production") {
-  globalForDb.sqlite = sqlite;
+  globalForDb.libsql = client;
 }
 
-export const db = drizzle(sqlite, { schema });
+export const db = drizzle(client, { schema });
 export * from "./schema";
