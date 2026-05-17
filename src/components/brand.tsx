@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 export function Brand({
@@ -9,15 +10,27 @@ export function Brand({
 }) {
   return (
     <div className={cn("flex items-center gap-2.5", className)}>
-      <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-base font-bold text-primary-fg">
-        L
-      </span>
+      <Image
+        src="/larissa-mark.png"
+        alt="Logo Larissa"
+        width={40}
+        height={40}
+        priority
+        className="h-9 w-9 object-contain"
+      />
       <div className="leading-tight">
-        <p className="text-base font-bold tracking-tight text-foreground">
-          Larissa
-        </p>
+        <Image
+          src="/larissa-wordmark.png"
+          alt="Larissa"
+          width={120}
+          height={33}
+          priority
+          className="h-5 w-auto"
+        />
         {withTagline ? (
-          <p className="text-[11px] text-muted">Serve To Be The Best</p>
+          <p className="mt-0.5 text-[11px] text-muted">
+            Serve To Be The Best
+          </p>
         ) : null}
       </div>
     </div>

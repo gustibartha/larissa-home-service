@@ -15,6 +15,10 @@ export const metadata: Metadata = {
   description:
     "Laboratorium Medis & Klinik Utama PT Larissa Prima Sejahtera — pesan layanan lab Home Service & kunjungan klinik langsung dari HP Anda.",
   applicationName: "Larissa",
+  icons: {
+    icon: "/larissa-mark.png",
+    apple: "/larissa-mark.png",
+  },
 };
 
 export const viewport: Viewport = {
