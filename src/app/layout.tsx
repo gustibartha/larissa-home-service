@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s · Larissa",
   },
   description:
-    "Laboratorium Medis & Klinik Utama PT Larissa Prima Sejahtera — pesan layanan lab Home Service & kunjungan klinik langsung dari HP Anda.",
+    "Laboratorium Medis & Klinik di Surabaya — pesan layanan lab Home Service & kunjungan klinik langsung dari HP Anda. Hasil aman & transparan.",
   applicationName: "Larissa",
   icons: {
     icon: "/larissa-mark.png",
